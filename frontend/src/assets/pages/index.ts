@@ -1,6 +1,6 @@
 export  {Dashboard} from './Dashboard';
 export  {Landing} from './Landing';
-export  {Home} from './Home';
+export  {Layout} from './Layout';
 export  {Register} from './Register';
 export  {Login} from './Login';
 export  {Error} from './Error';
