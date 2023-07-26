@@ -13,7 +13,12 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <Error/>,
     children: [
+      {
+        index:true,
+        element: <Landing/>
+      },
 
       {
         path: '/register',
@@ -29,8 +34,7 @@ const router = createBrowserRouter([
       }
 
     ]
-  },
-
+  }
 ]);
 
 function App() {
