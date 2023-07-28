@@ -8,7 +8,7 @@ import {
   Login,
   Dashboard,
   Error,
-} from './assets/pages'
+} from './pages'
 const router = createBrowserRouter([
   {
     path: '/',
