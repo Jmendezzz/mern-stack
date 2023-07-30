@@ -1,8 +1,21 @@
-
-export const Landing = ()=>{
-    
-    return (
-        <h1>Landing page</h1>
-    );
-
-}
+import landing_image from "../assets/images/layout/main.svg";
+export const Landing = () => {
+  return (
+    <section className="p-10 w-full h-auto ">
+      <div className="flex w-full  h-[700px] justify-center gap-5">
+        <div className="flex flex-col gap-10 w-[720px] justify-center">
+          <h1 className="font-bold ">
+            Job <span>tracking</span> app
+          </h1>
+          <p className="text-2xl">
+            Are you tired of juggling numerous job applications and feeling
+            overwhelmed by the job search process? Look no further Jobify is
+            here to transform your job hunting experience into a seamless and
+            rewarding journey.
+          </p>
+        </div>
+        <img src={landing_image} alt="Landing Image" />
+      </div>
+    </section>
+  );
+};

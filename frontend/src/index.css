@@ -2,15 +2,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*,
-::after,
-::before {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
+html,body {
+  margin: 0;
   font-size: 100%;
 } /*16px*/
 
@@ -170,7 +169,6 @@ ul {
 
 .img {
   width: 100%;
-  display: block;
   object-fit: cover;
 }
 /* buttons */
@@ -242,7 +240,6 @@ button:disabled {
   margin: 3rem auto;
 }
 .form-label {
-  display: block;
   font-size: var(--small-text);
   margin-bottom: 0.75rem;
   text-transform: capitalize;
