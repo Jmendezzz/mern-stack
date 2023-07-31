@@ -10,6 +10,3 @@ export  {CreateJob} from './CreateJob';
 export  {EditJob} from './EditJob';
 export  {Profile} from './Profile';
 export  {Admin} from './Admin';
-
-
-
