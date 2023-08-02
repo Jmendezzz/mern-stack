@@ -1,7 +1,13 @@
-
+import { Wrapper } from "../components";
 export const Register = () =>{
     return (
-        <h1>Register page</h1>
+        <Wrapper>
+
+            <form action="">
+
+            </form>
+
+        </Wrapper>
     );
     
 }
