@@ -7,7 +7,9 @@ export default {
   theme: {
     extend: {
       colors:{
-        principal: "#2cb1bc"
+        principal: "#2cb1bc",
+        input_form: "#f8fafc",
+        input_border: "#cbd5e1"
       }
     },
   },
