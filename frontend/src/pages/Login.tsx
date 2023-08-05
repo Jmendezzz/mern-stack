@@ -1,7 +1,11 @@
-
+import { Wrapper } from "../components";
+import { Logo } from "../components";
 export const Login = () =>{
     return (
-        <h1>Login page</h1>
+        <Wrapper>
+            <form action="">
+            </form>
+        </Wrapper>
     );
     
 }

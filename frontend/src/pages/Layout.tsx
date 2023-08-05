@@ -3,8 +3,8 @@ import { Logo } from "../components";
 
 export const Layout = ()=>{
     return (
-        <main className='h-full'>
-            <nav className="p-10">
+        <main >
+            <nav className="p-10 w-full flex justify-start">
                 <Logo/>
             </nav>
             <Outlet/>
