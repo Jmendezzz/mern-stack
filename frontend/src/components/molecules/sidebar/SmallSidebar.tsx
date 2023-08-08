@@ -2,6 +2,6 @@
 
 export const SmallSidebar = () => {
   return (
-    <div className="block sm:hidden">SmallSidebar</div>
+    <div className="block md:hidden">SmallSidebar</div>
   )
 }
