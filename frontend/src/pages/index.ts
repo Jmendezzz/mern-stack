@@ -1,4 +1,4 @@
-export  {Dashboard} from './Dashboard';
+export  {DashboardLayout} from './DashboardLayout';
 export  {Landing} from './Landing';
 export  {Layout} from './Layout';
 export  {Register} from './Register';
