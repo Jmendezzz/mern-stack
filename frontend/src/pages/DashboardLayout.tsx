@@ -16,10 +16,9 @@ export const DashboardLayout = () =>{
         name:'Jhon'
     }
     const [isDark, setIsDark] = useState<boolean>(false);
-    const [showSidebar, setShowSidebar] = useState<boolean>(true);
+    const [showSidebar, setShowSidebar] = useState<boolean>(false);
 
     const toggleSidebar  = () =>{
-        console.log('Testing ');
         setShowSidebar(prev=>!prev);
     }
     
