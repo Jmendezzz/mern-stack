@@ -29,9 +29,10 @@ export const DashboardLayout = () =>{
 
     return (
         <DashboardContext.Provider value={{isDark,showSidebar,toggleDarkTheme,toggleSidebar}}>
-            <Navbar />
             <SmallSidebar />
             <BigSidebar/>
+            <Navbar />
+
             <section>
                 <Outlet/>
             </section>
