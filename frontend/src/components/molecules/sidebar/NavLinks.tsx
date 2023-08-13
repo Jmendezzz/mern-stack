@@ -15,7 +15,7 @@ export const NavLinks = ({isBigSidebar}:Props) => {
         to={link.path}
         key={link.text}
         onClick={isBigSidebar ? ()=>{} : toggleSidebar }
-        className={({isActive})=>`flex w-full capitalize text-2xl hover:text-principal transition-colors ${isActive?'text-principal' : 'text-sky-950'}`}  
+        className={({isActive})=>`flex gap-2 items-center w-full capitalize text-2xl  hover:text-principal transition-colors ${isActive?'text-principal' : 'text-sky-950 dark:text-white'}`}  
         end
       >
         <span>{link.icon}</span>

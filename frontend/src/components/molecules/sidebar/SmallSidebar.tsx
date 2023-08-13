@@ -6,7 +6,8 @@ export const SmallSidebar = () => {
   const { showSidebar, toggleSidebar } = useDashboardContext();
   return (
     <div
-      className={`flex items-center justify-center w-full h-full absolute top-0 bottom-0 transition-all ${
+      className={`flex items-center justify-center w-full h-full absolute top-0 bottom-0 transition-all  dark:bg-gray-800
+      ${
         showSidebar ? "opacity-100" : "opacity-0"
       } block md:hidden`}
     >

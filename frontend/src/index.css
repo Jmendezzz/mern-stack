@@ -7,7 +7,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.dark{
+  color: white;
+  background-color: #0f172a;
+}
 html,body {
   margin: 0px;
   height: 100%;
