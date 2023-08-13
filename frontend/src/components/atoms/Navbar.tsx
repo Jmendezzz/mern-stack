@@ -1,11 +1,11 @@
 import {FaAlignLeft} from 'react-icons/fa';
 import { Logo } from '..';
-import { useDashboardContext } from '../../pages/DashboardLayout';
+import { useDashboardContext } from '../../pages/dashboard/DashboardLayout';
 
 export const Navbar = () => {
   const {toggleSidebar} = useDashboardContext();
   return (
-    <nav className='w-full p-4 md:p-10'>
+    <nav className='w-full p-4 md:p-10 border-b-4'>
       <ul className='flex justify-between w-full items-center'>
         <li className='grow '>
           <button onClick={toggleSidebar}>

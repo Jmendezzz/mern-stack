@@ -1,12 +1,13 @@
-export  {DashboardLayout} from './DashboardLayout';
+export  {DashboardLayout} from './dashboard/DashboardLayout';
 export  {Landing} from './Landing';
 export  {Layout} from './Layout';
 export  {Register} from './Register';
 export  {Login} from './Login';
 export  {Error} from './Error';
-export  {Stats} from './Stats';
+export  {Stats} from './dashboard/Stats';
 export  {Jobs} from './Jobs';
 export  {CreateJob} from './CreateJob';
 export  {EditJob} from './EditJob';
-export  {Profile} from './Profile';
-export  {Admin} from './Admin';
+export  {Profile} from './dashboard/Profile';
+export  {Admin} from './dashboard/Admin';
+export { AllJobs } from './dashboard/AllJobs';

@@ -1,4 +1,4 @@
-import { useDashboardContext } from "../../../pages/DashboardLayout";
+import { useDashboardContext } from "../../../pages/dashboard/DashboardLayout";
 import { AiOutlineClose } from "react-icons/ai";
 import { Logo } from "../..";
 import { NavLinks } from "../..";
@@ -19,7 +19,7 @@ export const SmallSidebar = () => {
           <AiOutlineClose className="text-4xl text-red-800 " />
         </button>
         <Logo />
-        <NavLinks />
+        <NavLinks isBigSidebar={false}/>
       </div>
     </div>
   );

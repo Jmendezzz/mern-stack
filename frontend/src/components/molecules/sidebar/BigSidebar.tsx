@@ -1,12 +1,17 @@
 import { NavLinks } from "./NavLinks";
 import { Logo } from "../..";
-import { useDashboardContext } from "../../../pages/DashboardLayout";
+import { useDashboardContext } from "../../../pages/dashboard/DashboardLayout";
 export const BigSidebar = () => {
   const {showSidebar} = useDashboardContext();
   return (
-      <section className={`h-full  hidden md:block ${showSidebar ? 'ml-[0px]' :'-ml-[250px]'} w-[250px] transition-all`}>
-        <Logo />
-        <NavLinks />
+      <section className={`h-full  hidden md:block ${showSidebar ? 'ml-[0px]' :'-ml-[350px]'} w-[350px] transition-all gap-5 border-r-4`}>
+
+        <div className="flex flex-col gap-10 p-5 w-full">
+          <Logo />
+          <NavLinks isBigSidebar={true} />
+
+        </div>
+
       </section>
   )
 }

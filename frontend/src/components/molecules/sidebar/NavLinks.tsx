@@ -1,17 +1,21 @@
 import { NavLink } from "react-router-dom"
 import { links } from "../../../utils/links"
-import { useDashboardContext } from "../../../pages/DashboardLayout"
+import { useDashboardContext } from "../../../pages/dashboard/DashboardLayout"
 
-export const NavLinks = () => {
+type Props = {
+  isBigSidebar:boolean
+
+}
+export const NavLinks = ({isBigSidebar}:Props) => {
     const {toggleSidebar} = useDashboardContext();
   return (
-    <section className="flex flex-col gap-4 h-full">
+    <section className="flex flex-col gap-8 h-full">
     {links.map((link) => (
       <NavLink
         to={link.path}
         key={link.text}
-        onClick={toggleSidebar}
-        className={({isActive})=>`flex gap-4 capitalize text-sky-950 text-2xl hover:text-principal transition-colors ${isActive?'text-principal' : 'text-sky-950'}`}  
+        onClick={isBigSidebar ? ()=>{} : toggleSidebar }
+        className={({isActive})=>`flex w-full capitalize text-2xl hover:text-principal transition-colors ${isActive?'text-principal' : 'text-sky-950'}`}  
         end
       >
         <span>{link.icon}</span>
