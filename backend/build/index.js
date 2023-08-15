@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 //Jobs
 let id = 0;
-const jobs = [
+let jobs = [
     {
         id: id++,
         company: "apple",
@@ -47,6 +47,34 @@ app.post(`${API_BASE_URL}/jobs`, (req, res) => {
     job.id = id++;
     jobs.push(job);
     res.status(201).send('Job added succesfully!');
+});
+// UPDATE A JOB
+app.put(`${API_BASE_URL}/jobs/:id`, (req, res) => {
+    const { id } = req.params;
+    const job = jobs.find(job => job.id == parseInt(id));
+    if (!job) {
+        res.status(400).send("Please send a valid job id");
+        return;
+    }
+    const jobUpdated = req.body;
+    if (!jobUpdated.company || !jobUpdated.position) {
+        res.status(400).send("Please fill the job's company and position");
+        return;
+    }
+    job.company = jobUpdated.company;
+    job.position = jobUpdated.position;
+    res.status(200).json(job);
+});
+// DELETE JOB
+app.delete(`${API_BASE_URL}/jobs/:id`, (req, res) => {
+    const { id } = req.params;
+    const job = jobs.find(job => job.id == parseInt(id));
+    if (!job) {
+        res.status(400).send("Please send a valid job id");
+        return;
+    }
+    jobs = jobs.filter(job => job.id != parseInt(id));
+    res.status(200).send('Job deleted');
 });
 app.post("/", (req, res) => {
     console.log(req.body);
