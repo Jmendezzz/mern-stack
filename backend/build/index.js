@@ -83,6 +83,9 @@ app.post("/", (req, res) => {
 app.get("/", (req, res) => {
     res.send("Hello world this is to easy buddy.");
 });
+app.use("*", (req, res) => {
+    res.status(404).send('The resource was not found');
+});
 app.listen(PORT, () => {
     console.log("Server is running on port: " + PORT);
 });
