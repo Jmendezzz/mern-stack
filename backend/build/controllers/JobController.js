@@ -1,47 +1,27 @@
+import Job from '../models/JobModel.js';
 export class JobController {
-    //Jobs
-    static id = 0;
-    static jobs = [
-        {
-            id: this.id++,
-            company: "apple",
-            position: "front-end",
-        },
-        {
-            id: this.id++,
-            company: "amazon",
-            position: "back-end",
-        },
-        {
-            id: this.id++,
-            company: "microsoft",
-            position: "lua-developer",
-        }
-    ];
-    static async getAllJobs(req, res) {
-        res.json(this.jobs);
+    id = 2;
+    jobs = [];
+    async getAllJobs(req, res) {
+        // res.json(this.jobs);
+        res.status(200).send('Executed');
     }
-    static async getJobById(req, res) {
+    async getJobById(req, res) {
         const { id } = req.params;
-        const job = this.jobs.find((job => job.id === parseInt(id)));
+        const job = this.jobs.find((job) => job.id === parseInt(id));
         if (!job) {
             return res.status(404).json({ message: `No Job founded with id: ${id}` });
         }
         res.status(200).json(job);
     }
-    static async createJob(req, res) {
+    async createJob(req, res) {
         const job = req.body;
-        if (!job.company || !job.position) {
-            res.status(400).send("Please fill the job's company and position");
-            return;
-        }
-        job.id = this.id++;
-        this.jobs.push(job);
-        res.status(201).send('Job added succesfully!');
+        const jobStored = await Job.create(job);
+        res.status(201).json({ msg: "Job added succesfully!", jobStored });
     }
-    static async updateJob(req, res) {
+    async updateJob(req, res) {
         const { id } = req.params;
-        const job = this.jobs.find(job => job.id == parseInt(id));
+        const job = this.jobs.find((job) => job.id == parseInt(id));
         if (!job) {
             res.status(400).send("Please send a valid job id");
             return;
@@ -55,14 +35,14 @@ export class JobController {
         job.position = jobUpdated.position;
         res.status(200).json(job);
     }
-    static async deleteJob(req, res) {
+    async deleteJob(req, res) {
         const { id } = req.params;
-        const job = this.jobs.find(job => job.id == parseInt(id));
+        const job = this.jobs.find((job) => job.id == parseInt(id));
         if (!job) {
             res.status(400).send("Please send a valid job id");
             return;
         }
-        this.jobs = this.jobs.filter(job => job.id != parseInt(id));
-        res.status(200).send('Job deleted');
+        this.jobs = this.jobs.filter((job) => job.id != parseInt(id));
+        res.status(200).send("Job deleted");
     }
 }

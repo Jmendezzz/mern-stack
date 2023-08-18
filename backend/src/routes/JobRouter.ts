@@ -1,19 +1,19 @@
 import { Router } from "express";
-import { API_BASE_URL } from "../index.js";
-import { JobController } from "../controllers/JobController.js";
+import { JobController} from "../controllers/JobController.js";
 
-const router  = Router();
+const router  =  Router();
 
+const jobController = new JobController();
 
-router.get( `${API_BASE_URL}/jobs`, JobController.getAllJobs);
+router.get( `/`, jobController.getAllJobs);
 
-router.get( `${API_BASE_URL}/jobs/:id`, JobController.getJobById);
+router.get( `/:id`, jobController.getJobById);
 
-router.post(`${API_BASE_URL}/jobs`, JobController.createJob);
+router.post(`/`, jobController.createJob);   
 
-router.put(`${API_BASE_URL}/jobs/:id`, JobController.updateJob);
+router.put(`/:id`, jobController.updateJob);
 
-router.delete(`${API_BASE_URL}/jobs/:id`, JobController.deleteJob);
+router.delete(`/:id`, jobController.deleteJob);
 
 
 export default router;
