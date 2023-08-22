@@ -1,6 +1,9 @@
+import 'express-async-errors'
 import express from "express";
 import * as dotenv from "dotenv";
-import mongoose from "mongoose";
+import mongoose, { Error } from "mongoose";
+import jobRouter from "./routes/JobRouter.js";
+import { errorHandlerMiddleware } from './middlewares/ErrorHandlerMiddleware.js';
 
 dotenv.config();
 
@@ -8,7 +11,6 @@ const PORT = process.env.PORT || 8000;
 
 export const API_BASE_URL = '/api/v1';
 
-import jobRouter from "./routes/JobRouter.js";
 
 
 const app = express();
@@ -20,6 +22,8 @@ app.use(`${API_BASE_URL}/jobs`,jobRouter);
 app.use("*",(req,res)=>{
   res.status(404).send('The resource was not found');
 });
+
+app.use(errorHandlerMiddleware);
 
 const MONGO_URL  =  process.env.MONGO_URL;
 

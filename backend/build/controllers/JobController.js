@@ -1,4 +1,6 @@
-import Job from '../models/JobModel.js';
+import Job from "../models/JobModel.js";
+import { StatusCodes } from "http-status-codes";
+import { NotFoundException } from "../exceptions/CustomException.js";
 export class JobController {
     id = 2;
     jobs = [];
@@ -8,47 +10,34 @@ export class JobController {
     }
     async getJobById(req, res) {
         const { id } = req.params;
-        try {
-            const job = await Job.findById(id);
-            res.status(200).json(job);
+        const job = await Job.findById(id);
+        if (!job) {
+            throw new NotFoundException(`No Job founded with id: ${id}`);
         }
-        catch (error) {
-            return res.status(404).json({ message: `No Job founded with id: ${id}` });
-        }
+        res.status(StatusCodes.OK).json(job);
     }
     async createJob(req, res) {
         const job = req.body;
-        try {
-            const jobStored = await Job.create(job);
-            res.status(201).json({ msg: "Job added succesfully!", jobStored });
-        }
-        catch (error) {
-            res.status(500).send('Something went wrong');
-        }
+        const jobStored = await Job.create(job);
+        res.status(StatusCodes.CREATED).json({ msg: "Job added succesfully!", jobStored });
     }
     async updateJob(req, res) {
         const { id } = req.params;
         const dataUpdated = req.body;
-        console.log(dataUpdated);
-        try {
-            const jobUpdated = await Job.findByIdAndUpdate(id, dataUpdated, {
-                new: true
-            });
-            res.status(200).json(jobUpdated);
+        const jobUpdated = await Job.findByIdAndUpdate(id, dataUpdated, {
+            new: true,
+        });
+        if (!jobUpdated) {
+            throw new NotFoundException("Please send a valid job id");
         }
-        catch (error) {
-            console.log(error);
-            res.status(400).send("Please send a valid job id");
-        }
+        res.status(StatusCodes.OK).json(jobUpdated);
     }
     async deleteJob(req, res) {
         const { id } = req.params;
-        try {
-            const removedJob = Job.findByIdAndDelete(id);
-            res.status(200).json(removedJob);
+        const removedJob = await Job.findByIdAndDelete(id);
+        if (!removedJob) {
+            throw new NotFoundException("Please send a valid job id");
         }
-        catch (error) {
-            res.status(400).send("Please send a valid job id");
-        }
+        res.status(StatusCodes.OK).json(removedJob);
     }
 }
