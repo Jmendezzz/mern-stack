@@ -1,7 +1,7 @@
 import 'express-async-errors'
 import express from "express";
 import * as dotenv from "dotenv";
-import mongoose, { Error } from "mongoose";
+import mongoose from "mongoose";
 import jobRouter from "./routes/JobRouter.js";
 import { errorHandlerMiddleware } from './middlewares/ErrorHandlerMiddleware.js';
 

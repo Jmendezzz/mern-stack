@@ -25,7 +25,7 @@ export const Landing = () => {
           </div>
           
         </div>
-        <div className="flex w-auto hidden lg:block ">
+        <div className="w-auto hidden lg:block ">
           <img src={landing_image} className="h-[700px] w-[600px]" alt="Landing Image" />
         </div>
       </div>
