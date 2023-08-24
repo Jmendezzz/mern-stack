@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { JobStatus } from "../enums/JobStatusEnum.js";
-import { JobType } from "../enums/JobType.js";
+import { JobType } from "../enums/JobTypeEnum.js";
 
 const JobSchema = new mongoose.Schema(
   {
