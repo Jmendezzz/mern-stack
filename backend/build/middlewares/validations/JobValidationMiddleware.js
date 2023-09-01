@@ -19,6 +19,6 @@ const jobValidations = [
         .withMessage('Invalid job status'),
     body('jobType')
         .isIn(Object.values(JobType))
-        .withMessage('Invalid job status'),
+        .withMessage('Invalid job type'),
 ];
 export const jobValidationMiddleware = validationMiddleware(jobValidations);

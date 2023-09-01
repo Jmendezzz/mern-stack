@@ -10,14 +10,13 @@ type Job = {
 };
 
 export class JobController {
-  id = 2;
-  jobs: Array<Job> = [];
-  async getAllJobs(req: Request, res: Response) {
+
+  public async getAllJobs(req: Request, res: Response) {
     const jobs = await Job.find({});
     res.json(jobs);
   }
 
-  async getJobById(req: Request, res: Response) {
+  public async getJobById(req: Request, res: Response) {
     const { id } = req.params;
     const job = await Job.findById(id);
 
@@ -28,14 +27,14 @@ export class JobController {
     res.status(StatusCodes.OK).json(job);
   }
 
-  async createJob(req: Request, res: Response) {
+  public async createJob(req: Request, res: Response) {
     const job = req.body;
     const jobStored = await Job.create(job);
 
     res.status(StatusCodes.CREATED).json({ msg: "Job added succesfully!", jobStored });
   }
 
-  async updateJob(req: Request, res: Response) {
+  public async updateJob(req: Request, res: Response) {
     const { id } = req.params;
     const dataUpdated = req.body;
     const jobUpdated = await Job.findByIdAndUpdate(id, dataUpdated, {
@@ -50,7 +49,7 @@ export class JobController {
 
   }
 
-  async deleteJob(req: Request, res: Response) {
+  public async deleteJob(req: Request, res: Response) {
     const { id } = req.params;
     const removedJob = await Job.findByIdAndDelete(id);
 
