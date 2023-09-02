@@ -5,7 +5,9 @@ import { validationMiddleware } from "./ValidationMiddleware.js";
 const loginValidations = [
     body('email')
         .notEmpty()
-        .withMessage('The email field is required'),
+        .withMessage('The email field is required')
+        .isEmail()
+        .withMessage('Invalid email'),
     body('password')
         .notEmpty()
         .withMessage('The password field is required')
@@ -36,3 +38,7 @@ const registerValidations =  [
         .notEmpty()
         .withMessage('The location field is required')
 ];
+
+export const loginValidationMiddleware = validationMiddleware(loginValidations);
+
+export const registerValidationMiddleware = validationMiddleware(registerValidations);
