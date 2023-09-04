@@ -11,7 +11,12 @@ export class AuthController {
             throw new UnauthenticatedException("Invalid credentials");
         }
         const token = generateJWT({ userId: user._id, role: user.role });
-        res.status(200).json({ msg: "User logged in succesfully!", token });
+        res.cookie("token", token, {
+            httpOnly: true,
+            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+            secure: process.env.NODE_ENV === "production"
+        });
+        res.status(200).json({ msg: "User logged in succesfully!" });
     }
     async register(req, res) {
         const user = req.body;

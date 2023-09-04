@@ -11,4 +11,4 @@ export const generateJWT = (payload: TokenPayload)=>{
         );
 
     return token;
-}
+}  

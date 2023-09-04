@@ -4,6 +4,7 @@ import UserModel from "../models/UserModel.js";
 import { encryptPassword, decryptPassword } from "../utils/PasswordUtils.js";
 import { UnauthenticatedException } from "../exceptions/CustomException.js";
 import { generateJWT } from "../utils/TokenUtils.js";
+import { timeStamp } from "console";
 
 type LoginInput = {
   email: string;
@@ -21,8 +22,12 @@ export class AuthController {
     }
 
     const token = generateJWT({userId: user._id, role: user.role});
-
-    res.status(200).json({ msg: "User logged in succesfully!", token });
+    res.cookie("token", token, {
+       httpOnly: true,
+       expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+       secure:  process.env.NODE_ENV === "production"
+      });
+    res.status(200).json({ msg: "User logged in succesfully!" });
   }
 
   public async register(req: Request, res: Response) {
