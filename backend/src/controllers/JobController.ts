@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Job from "../models/JobModel.js";
 import { StatusCodes } from "http-status-codes";
-import { NotFoundException } from "../exceptions/CustomException.js";
+import { NotFoundException, UnauthorizedError } from "../exceptions/CustomException.js";
 
 type Job = {
   id: number;
@@ -28,7 +28,9 @@ export class JobController {
   }
 
   public async createJob(req: Request, res: Response) {
+    console.log(req.body);
     const job = req.body;
+    job.createdBy  = req.body.user.userId;
     const jobStored = await Job.create(job);
 
     res.status(StatusCodes.CREATED).json({ msg: "Job added succesfully!", jobStored });

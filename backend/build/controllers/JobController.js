@@ -15,7 +15,9 @@ export class JobController {
         res.status(StatusCodes.OK).json(job);
     }
     async createJob(req, res) {
+        console.log(req.body);
         const job = req.body;
+        job.createdBy = req.body.user.userId;
         const jobStored = await Job.create(job);
         res.status(StatusCodes.CREATED).json({ msg: "Job added succesfully!", jobStored });
     }

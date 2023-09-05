@@ -2,6 +2,7 @@ import { Schema, model } from "mongoose";
 import { Roles } from "../enums/RolesEnum.js";
 
 export interface User {
+  userId:string; 
   name: string;
   lastName: string;
   email: string;

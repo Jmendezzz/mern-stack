@@ -5,3 +5,7 @@ export const generateJWT = (payload) => {
     });
     return token;
 };
+export const validateJWT = (token) => {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    return decoded;
+};
