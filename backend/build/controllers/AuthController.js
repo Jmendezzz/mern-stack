@@ -24,4 +24,8 @@ export class AuthController {
         const userStored = await UserModel.create(user);
         res.status(201).json({ msg: "User added succesfully!", userStored });
     }
+    async logout(req, res) {
+        res.clearCookie("token");
+        res.status(200).json({ msg: "User logged out succesfully!" });
+    }
 }
