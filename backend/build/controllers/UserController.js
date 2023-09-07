@@ -1,23 +1,14 @@
 import { StatusCodes } from "http-status-codes";
-import { Request, Response } from "express";
 import UserModel from "../models/UserModel.js";
-import JobModel from "../models/JobModel.js";
 import { BadRequestException } from "../exceptions/CustomException.js";
-
 export class UserController {
-
-    public getCurrentUser = async(req: Request, res: Response) => {
+    getCurrentUser = async (req, res) => {
         const user = await UserModel.findById(req.body.user.userId);
-        if(!user){
+        if (!user) {
             throw new BadRequestException('User not found');
         }
-
-        res.status(StatusCodes.OK).json({user: user});
-    }
-    
-    public updateUser = async(req: Request, res: Response) => {
-    
-    }
-
+        res.status(StatusCodes.OK).json({ user: user });
+    };
+    updateUser = async (req, res) => {
+    };
 }
-

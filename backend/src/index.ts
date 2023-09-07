@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 // Routers
 import jobRouter from "./routes/JobRouter.js";
 import authRouter from "./routes/AuthRouter.js";
+import userRouter from "./routes/UserRouter.js";
 
 // Middleware
 import { errorHandlerMiddleware } from './middlewares/ErrorHandlerMiddleware.js';
@@ -25,6 +26,8 @@ app.use(cookieParser());
 // Routes
 app.use(`${API_BASE_URL}/jobs`,authenticateUser,jobRouter);
 app.use(`${API_BASE_URL}/auth`,authRouter);
+app.use(`${API_BASE_URL}/users`,authenticateUser,userRouter);
+
 app.use("*",(req,res)=>{
   res.status(404).send('The resource was not found');
 });
