@@ -26,7 +26,7 @@ export class UnauthenticatedException extends Error {
             this.statusCode = StatusCodes.UNAUTHORIZED;
     }
 }
-export class UnauthorizedError extends Error {
+export class UnauthorizedException extends Error {
     name;
     statusCode;
     constructor(message) {

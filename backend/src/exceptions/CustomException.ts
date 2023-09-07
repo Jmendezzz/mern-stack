@@ -36,7 +36,7 @@ export class UnauthenticatedException extends Error {
     }
 }
 
-export class UnauthorizedError extends Error{
+export class UnauthorizedException extends Error{
     name:string;
     statusCode: number;
 

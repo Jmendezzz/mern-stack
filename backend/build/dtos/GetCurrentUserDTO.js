@@ -3,6 +3,7 @@ export class CurrentUserDTO {
     name;
     lastName;
     email;
+    location;
     role;
     constructor(user, id) {
         this.userId = id;
@@ -10,5 +11,6 @@ export class CurrentUserDTO {
         this.lastName = user.lastName;
         this.email = user.email;
         this.role = user.role;
+        this.location = user.location;
     }
 }

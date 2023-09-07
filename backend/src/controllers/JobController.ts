@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import Job from "../models/JobModel.js";
 import { StatusCodes } from "http-status-codes";
-import { NotFoundException, UnauthorizedError } from "../exceptions/CustomException.js";
+import { NotFoundException} from "../exceptions/CustomException.js";
 
 type Job = {
   id: number;
