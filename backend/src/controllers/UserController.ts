@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import UserModel from "../models/UserModel.js";
 import JobModel from "../models/JobModel.js";
 import { BadRequestException } from "../exceptions/CustomException.js";
+import { CurrentUserDTO } from "../dtos/GetCurrentUserDTO.js";
 
 export class UserController {
 
@@ -11,8 +12,9 @@ export class UserController {
         if(!user){
             throw new BadRequestException('User not found');
         }
+        const userDTO = new CurrentUserDTO(user, user._id);
 
-        res.status(StatusCodes.OK).json({user: user});
+        res.status(StatusCodes.OK).json({user: userDTO});
     }
     
     public updateUser = async(req: Request, res: Response) => {
