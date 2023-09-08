@@ -6,9 +6,8 @@ import { StatusCodes } from "http-status-codes";
 export class StatsController{
 
     public async getStats(req: Request, res: Response ){
-
-        const users = UserModel.countDocuments();
-        const jobs = JobModel.countDocuments();
+        const users = await UserModel.countDocuments();
+        const jobs = await  JobModel.countDocuments();
 
         res.status(StatusCodes.OK).json({users,jobs})
     }

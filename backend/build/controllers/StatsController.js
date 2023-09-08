@@ -3,8 +3,9 @@ import UserModel from "../models/UserModel.js";
 import { StatusCodes } from "http-status-codes";
 export class StatsController {
     async getStats(req, res) {
-        const users = UserModel.countDocuments();
-        const jobs = JobModel.countDocuments();
+        const users = await UserModel.countDocuments();
+        const jobs = await JobModel.countDocuments();
+        console.log(users, jobs);
         res.status(StatusCodes.OK).json({ users, jobs });
     }
 }
